@@ -6,7 +6,7 @@
     {
       "name": "issue-review",
       "source": "./plugins/issue-review",
-      "description": "세무·회계 이슈 검토 파이프라인 (/세무이슈, /회계이슈) — 원문 근거·인용 검증 포함"
+      "description": "세무·회계 이슈 검토 파이프라인 (/세무이슈, /회계이슈, /메일회신) — 원문 근거·인용 검증 포함"
     }
   ]
 }

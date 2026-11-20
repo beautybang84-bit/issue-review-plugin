@@ -1,6 +1,6 @@
 ---
 name: 이슈검토설정
-description: /세무이슈·/회계이슈의 선택 항목(NotebookLM 노트북, GPT 교차검토, CaseNote 브라우저 조회)과 결과 저장 폴더를 설정하고, 필요한 MCP 연결 상태를 점검한다. "/이슈검토설정"으로 호출.
+description: /세무이슈·/회계이슈·/메일회신의 선택 항목(메일 가져올 곳·서명 포함)(NotebookLM 노트북, GPT 교차검토, CaseNote 브라우저 조회)과 결과 저장 폴더를 설정하고, 필요한 MCP 연결 상태를 점검한다. "/이슈검토설정"으로 호출.
 disable-model-invocation: true
 ---
 
@@ -27,6 +27,10 @@ AskUserQuestion으로 한 번에 묻는다 (최대 4문항).
 - CaseNote 브라우저 조회를 쓸지 — Chrome 확장이 필요하고, 세무 인용 재조사 단계에서만 쓴다.
 - 결과 저장 기본 폴더 — 비워 두면 저장할 때마다 묻는다.
 
+이어서 `/메일회신`용으로 한 번 더 묻는다.
+- 메일을 어디서 가져올지 — 붙여넣기 / Microsoft 365(회사 Outlook, claude.ai 커넥터) / Gmail(claude.ai 커넥터) / 클래식 Outlook(PC, pywin32) / 매번 묻기. 커넥터는 claude.ai 설정 → 커넥터에서 연결한다고 안내하고, 도구가 이 세션에 보이는지(`mcp__claude_ai_Microsoft_365__*`, `mcp__claude_ai_Gmail__*`) 확인한다. 클래식 Outlook은 `python -c "import win32com.client"`로 pywin32 설치 여부를 본다(없으면 `pip install pywin32`).
+- 초안 끝에 붙일 이름·서명 (자유 입력, 비워도 됨)
+
 ## 3. 저장
 
 받은 값으로 설정 파일을 쓴다.
@@ -36,7 +40,8 @@ AskUserQuestion으로 한 번에 묻는다 (최대 4문항).
   "notebooklm": { "enabled": true, "practice_notebook": "<별칭 또는 ID>", "standards_notebook": "<별칭 또는 ID 또는 빈칸>" },
   "gpt_review": { "enabled": false },
   "casenote":   { "enabled": false },
-  "save_root":  "<폴더 경로 또는 빈칸>"
+  "save_root":  "<폴더 경로 또는 빈칸>",
+  "mail": { "source": "ask", "my_name": "", "signature": "", "tone": "정중한 실무체" }
 }
 ```
 

@@ -1,5 +1,5 @@
 {
   "name": "issue-review",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "세무·회계 이슈를 여러 검색 agent로 병렬 조사하고, 원문 근거와 인용 검증을 거쳐 결론을 취합한다. NotebookLM·GPT 교차검토·CaseNote는 선택 항목."
 }
