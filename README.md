@@ -20,7 +20,7 @@ Claude Code에서 세무·회계 이슈를 입력하면, 여러 검색 agent를 
 
 GitHub 저장소로 받는 경우:
 ```
-/plugin marketplace add <GitHub계정>/<저장소이름>
+/plugin marketplace add beautybang84-bit/issue-review-plugin
 /plugin install issue-review@issue-review-market
 ```
 
@@ -100,3 +100,10 @@ plugins/issue-review/
 - GPT 교차검토로 보낼 때는 거래처 상호·개인정보를 가린 뒤 보냅니다. 그래도 사무소 정보보호 방침을 먼저 확인하세요.
 - 회계위키·TaxDoctor·CaseNote는 외부 서비스입니다. 질의 내용에 거래처 식별 정보를 넣지 않는 것을 권합니다.
 - 각 출처의 저작권은 원 기관에 있습니다. NotebookLM 노트북은 본인 계정 자료만 씁니다.
+
+## 5. 업데이트
+
+새 버전이 올라오면 Claude Code에서:
+```
+/plugin marketplace update issue-review-market
+```
