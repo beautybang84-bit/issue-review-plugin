@@ -33,9 +33,9 @@ GitHub 저장소로 받는 경우:
 
 설치하면 **회계위키**와 **TaxDoctor** MCP는 자동으로 연결됩니다(주소만 쓰는 공개 서버).
 
-### 1-2. MCP 설치 — 세무 본조사용 2종 (터미널에서)
+### 1-2. MCP 설치 - 세무 본조사용 2종 (터미널에서)
 
-**국세법령정보시스템 (nts-tax)** — 파이썬 필요
+**국세법령정보시스템 (nts-tax)** - 파이썬 필요
 ```bash
 git clone https://github.com/taxwoong/nts-tax-mcp.git
 cd nts-tax-mcp
@@ -43,8 +43,8 @@ pip install -r requirements.txt
 claude mcp add --scope user nts-tax -e MCP_TRANSPORT=stdio -- python "<클론한 폴더 전체 경로>/server.py"
 ```
 
-**국가법령정보센터 (korean-law)** — Node.js 필요, 법제처 Open API 인증키(OC) 필요
-1. https://open.law.go.kr 에서 회원가입 후 Open API 사용 신청 → 본인 OC 값(보통 가입 이메일 아이디) 확보
+**국가법령정보센터 (korean-law)** - Node.js 필요, 법제처 Open API 인증키(OC) 필요
+1. [open.law.go.kr](https://open.law.go.kr)에서 회원가입 후 Open API 사용 신청 → 본인 OC 값(보통 가입 이메일 아이디) 확보
 2. 설치·등록
 ```bash
 npm install -g korean-law-mcp
@@ -53,6 +53,10 @@ claude mcp add --scope user korean-law -e LAW_OC=<본인 OC> -- korean-law-mcp
 (명령 이름이 안 잡히면 `-- node "<npm 전역 폴더>/korean-law-mcp/build/index.js"` 형태로 등록)
 
 설치 후 `claude mcp list`에서 `nts-tax`, `korean-law`, `accountingwiki`, `taxdoctor`가 연결(✓)인지 확인합니다. 빠진 서버가 있어도 agent가 웹 검색으로 대신하지만 정확도가 떨어집니다.
+
+### 1-2-1. 문체 점검 스킬 (권장)
+
+결과의 마지막 문체 점검에 [ko-writing-check](https://github.com/procpalee/kr-accounting-skills/tree/main/ko-writing-check)(MIT)를 씁니다. [zip](https://github.com/procpalee/kr-accounting-skills/releases/latest/download/ko-writing-check.zip)을 받아 `~/.claude/skills/ko-writing-check/`에 풀어 두세요. 없으면 점검을 건너뛰고 `NOT_RUN`으로 표시합니다.
 
 ### 1-3. 선택 항목 (필요한 사람만)
 

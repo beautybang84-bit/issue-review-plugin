@@ -110,7 +110,8 @@ $ARGUMENTS 가 메일 본문을 통째로 붙여 넣은 것이면 그대로 쓴�
 
 1. **인용 재점검**: 초안으로 옮기며 바뀐 인용이 있으면 세무는 `mcp__taxdoctor__verify_citations`, 회계는 `mcp__accountingwiki__check_citations`로 다시 본다.
 2. **GPT 교차검토**(`gpt_review.enabled`가 true이고 세무·회계 판단이 들어간 경우): 최종 초안 전체를 `gpt-review` agent에 넘긴다. 받는 사람이 오해할 표현, 지나친 단정도 함께 본다. 반영한 지적과 반영하지 않은 지적을 한두 줄로 보고한다. 실패하면 "GPT 교차검토 미실시(사유)"로 적고 진행한다.
-3. 자료·일정·기타만 있는 메일은 1·2를 건너뛴다.
+3. **문체 점검(항상, 자료·일정 메일 포함)**: 회신 초안 본문을 `.txt`로 저장해 `ko-writing-check` 스캐너로 점검한다(`python -X utf8 ~/.claude/skills/ko-writing-check/scripts/slop_scan.py <파일> --info`). 업무 메일 문체(`~합니다`, `~드립니다`)는 유지하고 WARN만 0으로 만든다. 세무·회계 판단이 담긴 회신은 그 스킬의 「독립 검토 1회」까지 한다. 스킬이 없으면 내부 메모에 `문체 점검: NOT_RUN(미설치)`.
+4. 자료·일정·기타만 있는 메일은 1·2를 건너뛴다.
 
 ## 6. 전달
 

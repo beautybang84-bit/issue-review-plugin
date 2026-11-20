@@ -62,6 +62,15 @@ agent 보고와 회계위키 결과를 하나의 결론으로 묶는다. 상충�
 - GPT가 새로 꺼낸 근거는 [미검증] — 회계위키·kasb-search로 확인한 뒤에만 쓴다.
 - 실패(로그인·잔액·타임아웃)하면 멈추지 말고 「상충·한계」에 "GPT 교차검토 미실시(사유)"로 적는다.
 
+## 5-1. 문체 점검 — ko-writing-check (매번)
+
+보고하기 전에 문체를 점검한다. `ko-writing-check` 스킬(github.com/procpalee/kr-accounting-skills, MIT)이 설치되어 있어야 한다. 위치는 `~/.claude/skills/ko-writing-check/`.
+1. 보고 본문을 임시 `.md`로 저장하고 `python -X utf8 ~/.claude/skills/ko-writing-check/scripts/slop_scan.py <파일> --info --heads`를 돌린다.
+2. WARN(줄표, 공백 가운뎃점, 번역투 등)은 모두 고치고, INFO와 뜻 신호는 읽고 판단한다. 결론 첫 문장이 "누가 무엇을 하는지"를 드러내는지 본다.
+3. **문체만 고친다.** 결론, 숫자, 근거 번호, 인용문, 기준서·세법 용어는 바꾸지 않는다. 다시 스캔해 WARN 0을 확인한다.
+4. 의견서·거래처 회신으로 나가는 문서는 그 스킬의 「독립 검토 1회」까지 한다.
+5. 보고 끝에 `문체 점검: 스캔 PASS, WARN 수정 N건` 한 줄. 스킬이 없으면 `문체 점검: NOT_RUN(ko-writing-check 미설치)`로 적고 README 설치 안내를 한 줄 알린다.
+
 ## 6. 보고 형식
 
 ```
